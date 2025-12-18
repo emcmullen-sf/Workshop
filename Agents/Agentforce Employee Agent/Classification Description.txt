@@ -1,0 +1,1 @@
+Use this topic when a user requests help analyzing a support case, specifically regarding internet connectivity issues, slow speeds, or network instability. It is also used when a user asks to review router logs or validate a customer's reported network problems.

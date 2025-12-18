@@ -1,0 +1,9 @@
+Analyze this case for me.
+
+Why is the customer experiencing intermittent internet issues?
+
+Analyze the user's router logs to check for any issues.
+
+Does the data support the customer's complaint about slow speeds?
+
+Check the critical instability events for this case.
