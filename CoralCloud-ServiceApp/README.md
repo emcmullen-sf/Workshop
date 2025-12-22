@@ -6,7 +6,7 @@ Salesforce metadata package for Data 360 with BigQuery workshop (Base components
 
 Click the button below to deploy this package to your Salesforce org:
 
-<a href="https://githubsfdeploy.herokuapp.com?owner=emcmullen-sf&repo=Workshop&ref=main&path=Packages/CoralCloud-ServiceApp">
+<a href="https://githubsfdeploy.herokuapp.com?owner=emcmullen-sf&repo=Workshop&ref=main&path=CoralCloud-ServiceApp">
   <img alt="Deploy to Salesforce" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
 
