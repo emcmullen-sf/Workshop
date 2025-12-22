@@ -6,7 +6,7 @@ Salesforce metadata package for Data 360 with BigQuery workshop.
 
 Click the button below to deploy this package to your Salesforce org:
 
-<a href="https://githubsfdeploy.herokuapp.com?owner=emcmullen-sf&repo=Workshop&ref=main&path=Packages/Data%20360%20with%20BigQuery%201">
+<a href="https://githubsfdeploy.herokuapp.com?owner=emcmullen-sf&repo=Workshop&ref=main&path=Packages/Data-360-with-BigQuery-1">
   <img alt="Deploy to Salesforce" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
 

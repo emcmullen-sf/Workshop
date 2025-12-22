@@ -53,3 +53,7 @@ config/local-config.json
 
 # Reports
 hardis-report/
+
+Project/*
+
+.vscode/*
