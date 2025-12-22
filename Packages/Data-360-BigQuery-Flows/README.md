@@ -1,12 +1,12 @@
-# Data 360 with BigQuery 2
+# Data 360 BigQuery Flows
 
-Salesforce metadata package for Data 360 with BigQuery workshop (Part 2).
+Salesforce metadata package for Data 360 with BigQuery workshop (Flows and Apex).
 
 ## Deploy to Salesforce
 
 Click the button below to deploy this package to your Salesforce org:
 
-<a href="https://githubsfdeploy.herokuapp.com?owner=emcmullen-sf&repo=Workshop&ref=main&path=Packages/Data-360-with-BigQuery-2">
+<a href="https://githubsfdeploy.herokuapp.com?owner=emcmullen-sf&repo=Workshop&ref=main&path=Packages/Data-360-BigQuery-Flows">
   <img alt="Deploy to Salesforce" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
 
@@ -48,4 +48,3 @@ src/
 │   └── Router_Remote_Firmware_Reset.flow-meta.xml
 └── package.xml
 ```
-

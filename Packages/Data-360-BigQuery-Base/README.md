@@ -1,12 +1,12 @@
-# Data 360 with BigQuery 1
+# Data 360 BigQuery Base
 
-Salesforce metadata package for Data 360 with BigQuery workshop.
+Salesforce metadata package for Data 360 with BigQuery workshop (Base components).
 
 ## Deploy to Salesforce
 
 Click the button below to deploy this package to your Salesforce org:
 
-<a href="https://githubsfdeploy.herokuapp.com?owner=emcmullen-sf&repo=Workshop&ref=main&path=Packages/Data-360-with-BigQuery-1">
+<a href="https://githubsfdeploy.herokuapp.com?owner=emcmullen-sf&repo=Workshop&ref=main&path=Packages/Data-360-BigQuery-Base">
   <img alt="Deploy to Salesforce" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
 
@@ -37,4 +37,3 @@ src/
 │   └── Router_Workshop_Admin_Additional_Access.permissionset-meta.xml
 └── package.xml
 ```
-
