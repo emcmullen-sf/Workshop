@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Get_Critical_Instability_Events</name>
+        <label>Get Critical Instability Events</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>GetRouterCriticalEvents</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Found_Critical_Instability_Events</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>deviceId</name>
+            <value>
+                <elementReference>Get_related_Asset_record.SerialNumber</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>GetRouterCriticalEvents</nameSegment>
+        <offset>0</offset>
+        <outputParameters>
+            <assignToReference>criticalInstabilityEvents</assignToReference>
+            <name>events</name>
+        </outputParameters>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Asset_not_linked_message</name>
+        <label>Asset not linked message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>The Case AssetId is not set</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>No_Event_Records_found_message</name>
+        <label>No Event Records found message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>NO Router Critical Instability Events were found for this Case and Asset</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Serial_Number_not_available_message</name>
+        <label>Serial Number not available message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>errorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>The Serial Number is not available on the Asset record</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Set_Success_Boolean</name>
+        <label>Set Success Boolean</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>isSuccess</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Checks if the Asset is linked to the case</description>
+        <name>Asset_is_linked_check</name>
+        <label>Asset is linked check</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Asset_not_linked_message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Asset is not linked</defaultConnectorLabel>
+        <rules>
+            <name>Asset_is_linked</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case_Record.AssetId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_related_Asset_record</targetReference>
+            </connector>
+            <label>Asset is linked</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Asset_Serial_Number_Available</name>
+        <label>Asset Serial Number Available</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Serial_Number_not_available_message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Serial Number NOT Available</defaultConnectorLabel>
+        <rules>
+            <name>Serial_Number_Available</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_related_Asset_record.SerialNumber</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Critical_Instability_Events</targetReference>
+            </connector>
+            <label>Serial Number Available</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Found_Critical_Instability_Events</name>
+        <label>Found Critical Instability Events?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Set_Success_Boolean</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Critical Stability Events Found</defaultConnectorLabel>
+        <rules>
+            <name>No_Critical_Stability_Events_Found</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>criticalInstabilityEvents</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>criticalInstabilityEvents</leftValueReference>
+                <operator>IsEmpty</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>No_Event_Records_found_message</targetReference>
+            </connector>
+            <label>No Critical Stability Events Found</label>
+        </rules>
+    </decisions>
+    <description>Retrieves the Router Critical Instability Events for a given Case Id</description>
+    <environments>Default</environments>
+    <interviewLabel>Router Critical Instability Events Agent {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Router Critical Instability Events Agent</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets case record details</description>
+        <name>Get_Case_Record</name>
+        <label>Get Case Record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Asset_is_linked_check</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>AssetId</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_related_Asset_record</name>
+        <label>Get related Asset record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Asset_Serial_Number_Available</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Case_Record.AssetId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Asset</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>SerialNumber</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Case_Record</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>The critical Instability Events that were found</description>
+        <name>criticalInstabilityEvents</name>
+        <apexClass>InsightRow</apexClass>
+        <dataType>Apex</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>A Message to help debug issues</description>
+        <name>errorMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>A boolean to indicate if any Router Critical Instability Events were found for this case. If false, we did find any, if true they are returned</description>
+        <name>isSuccess</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <description>The record Id passed into this flow, it should be a case Id</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

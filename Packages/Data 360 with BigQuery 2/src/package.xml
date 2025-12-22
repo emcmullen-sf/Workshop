@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>GetRouterCriticalEvents</members>
+        <members>GetRouterCriticalEventsTest</members>
+        <members>InsightRow</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Coral_Cloud_Service_Case_Layout</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>Router_Critical_Instability_Events_Agent</members>
+        <members>Router_Critical_Instability_Events_Data_Table</members>
+        <members>Router_Diagnostic_Logs_Data_Table</members>
+        <members>Router_Remote_Firmware_Reset</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Router_Workshop_Admin_Additional_Access</members>
+        <name>PermissionSet</name>
+    </types>
+    <version>65.0</version>
+</Package>
