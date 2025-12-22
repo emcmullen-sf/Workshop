@@ -28,9 +28,6 @@ This package contains:
 - **Router_Diagnostic_Logs_Data_Table** - Data table flow for diagnostic logs
 - **Router_Remote_Firmware_Reset** - Flow for remote firmware reset
 
-### Permission Sets
-- **Router_Workshop_Admin_Additional_Access** - Additional admin permissions for the router workshop
-
 ## Structure
 
 ```
@@ -49,8 +46,6 @@ src/
 │   ├── Router_Critical_Instability_Events_Data_Table.flow-meta.xml
 │   ├── Router_Diagnostic_Logs_Data_Table.flow-meta.xml
 │   └── Router_Remote_Firmware_Reset.flow-meta.xml
-├── permissionsets/
-│   └── Router_Workshop_Admin_Additional_Access.permissionset-meta.xml
 └── package.xml
 ```
 

@@ -17,9 +17,5 @@
         <members>Router_Remote_Firmware_Reset</members>
         <name>Flow</name>
     </types>
-    <types>
-        <members>Router_Workshop_Admin_Additional_Access</members>
-        <name>PermissionSet</name>
-    </types>
     <version>65.0</version>
 </Package>
