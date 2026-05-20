@@ -1,0 +1,26 @@
+Create a Lightning Web Component (LWC) called routerHealthMonitor that acts as a simple, high-level dashboard to display router diagnostic logs.
+
+Requirements:
+
+UI Design: Use a lightning-card with the title "Router Health Monitor" and a standard Salesforce utility icon. Inside the card, use a lightning-datatable to display the router data.
+
+Columns: The table should display the following columns: Device MAC, Connection Status, CPU Load, Packet Loss, and Timestamp.
+
+Data Source (Important): Do NOT write an Apex controller or make actual data queries yet. Instead, create a hardcoded mock data array in the JavaScript file using 3 to 4 realistic sample records. This will allow me to iterate on the UI quickly.
+
+Future Query Context: Include the actual SOQL query in a block comment at the top of your JavaScript file so I have it ready when we wire up the real Data Cloud object (Router_Diagnostic_Logs__dlm).
+
+Reference Data for your Mock Array:
+
+device_mac__c (e.g., "A1:B2:C3:D4:E5")
+
+connection_status__c (e.g., "Connected", "Disconnected")
+
+device_cpu_load__c (e.g., 43.6, 42.14)
+
+packet_loss_pct__c (e.g., 0.06, 0.08)
+
+timestamp_utc__c (e.g., "2025-12-08T19:59:55.000+0000")
+
+SOQL Query for Later Use:
+SELECT connected_clients__c, connection_status__c, DataSource__c, DataSourceObject__c, device_cpu_load__c, device_mac__c, downstream_snr__c, firmware_ver__c, Id, log_id__c, packet_loss_pct__c, subscriber_id__c, timestamp_utc__c FROM Router_Diagnostic_Logs__dlm LIMIT 10
