@@ -30,6 +30,7 @@
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Coral Cloud Service</label>
     <navType>Standard</navType>
+    <tabs>Workshop_Setup</tabs>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>
     <tabs>standard-Case</tabs>

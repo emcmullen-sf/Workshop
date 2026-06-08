@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>WorkshopSetupController</members>
+        <members>WorkshopSetupControllerTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
         <members>Coral_Cloud_Service</members>
         <name>CustomApplication</name>
     </types>
     <types>
+        <members>Workshop_Setup</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
         <members>Coral_Cloud_Service_Case_Layout</members>
         <members>Coral_Cloud_Service_UtilityBar</members>
+        <members>Workshop_Setup</members>
         <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>workshopSetup</members>
+        <name>LightningComponentBundle</name>
     </types>
     <types>
         <members>Router_Workshop_Admin_Additional_Access</members>

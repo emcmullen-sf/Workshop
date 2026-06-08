@@ -1,0 +1,95 @@
+<template>
+    <lightning-card title="Workshop Setup" icon-name="custom:custom57">
+        <div class="slds-var-p-horizontal_medium slds-var-p-bottom_medium">
+            <p class="slds-text-body_regular slds-var-m-bottom_medium">
+                Run the two setup steps below to prepare your org for the Zero Copy
+                workshop. Each step is safe to run once&mdash;buttons disable when complete.
+            </p>
+
+            <template if:true={loadingStatus}>
+                <lightning-spinner alternative-text="Checking setup status" size="small"></lightning-spinner>
+            </template>
+
+            <!-- Step 1 -->
+            <div class="slds-box slds-var-m-bottom_medium">
+                <div class="slds-grid slds-grid_vertical-align-center slds-var-m-bottom_x-small">
+                    <lightning-icon
+                        icon-name={step1IconName}
+                        variant={step1IconVariant}
+                        size="small"
+                        class="slds-var-m-right_small">
+                    </lightning-icon>
+                    <h2 class="slds-text-heading_small">Step 1&nbsp;&mdash;&nbsp;Assign Permission Set</h2>
+                </div>
+                <p class="slds-text-body_small slds-var-m-bottom_small">
+                    Assigns <strong>Router Workshop - Admin Additional Access</strong> to you,
+                    granting access to the fields used in this workshop.
+                </p>
+                <lightning-button
+                    variant="brand"
+                    label={step1ButtonLabel}
+                    onclick={handleStep1}
+                    disabled={step1Disabled}>
+                </lightning-button>
+                <template if:true={step1Running}>
+                    <lightning-spinner alternative-text="Running" size="small"></lightning-spinner>
+                </template>
+                <template if:true={step1Message}>
+                    <p class="slds-text-body_small slds-var-m-top_x-small slds-text-color_success">
+                        {step1Message}
+                    </p>
+                </template>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="slds-box slds-var-m-bottom_medium">
+                <div class="slds-grid slds-grid_vertical-align-center slds-var-m-bottom_x-small">
+                    <lightning-icon
+                        icon-name={step2IconName}
+                        variant={step2IconVariant}
+                        size="small"
+                        class="slds-var-m-right_small">
+                    </lightning-icon>
+                    <h2 class="slds-text-heading_small">Step 2&nbsp;&mdash;&nbsp;Create Demo Records</h2>
+                </div>
+                <p class="slds-text-body_small slds-var-m-bottom_small">
+                    Creates the Account, Contact, Product, Asset, and Case used throughout
+                    the exercises.
+                </p>
+                <lightning-button
+                    variant="brand"
+                    label={step2ButtonLabel}
+                    onclick={handleStep2}
+                    disabled={step2Disabled}>
+                </lightning-button>
+                <template if:true={step2Running}>
+                    <lightning-spinner alternative-text="Running" size="small"></lightning-spinner>
+                </template>
+                <template if:true={step2Message}>
+                    <p class="slds-text-body_small slds-var-m-top_x-small slds-text-color_success">
+                        {step2Message}
+                    </p>
+                </template>
+                <template if:true={showOpenCase}>
+                    <div class="slds-var-m-top_small">
+                        <lightning-button
+                            variant="neutral"
+                            label="Open the Case"
+                            icon-name="utility:forward"
+                            icon-position="right"
+                            onclick={openCase}>
+                        </lightning-button>
+                    </div>
+                </template>
+            </div>
+
+            <template if:true={allComplete}>
+                <div class="slds-box slds-theme_success slds-text-align_center">
+                    <lightning-icon icon-name="utility:success" variant="inverse" size="small"
+                        class="slds-var-m-right_x-small"></lightning-icon>
+                    <span class="slds-text-heading_small">Setup complete&mdash;you're ready to start the workshop!</span>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
